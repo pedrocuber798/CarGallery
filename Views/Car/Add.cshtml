@@ -1,0 +1,41 @@
+﻿@using CarGallery.ViewModel
+@model AddNewCarViewModel
+
+<form for="post" asp-action="save" asp-controller="Car" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descrição Curta</label>
+        <input type="text" class="form-control" asp-for="ShortDescription">
+        <span asp-validation-for="ShortDescription"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descrição Longa</label>
+        <input type="text" class="form-control" asp-for="LongDescription">
+        <span asp-validation-for="LongDescription"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Imagem</label>
+        <input type="File" class="form-control" asp-for="Image">
+        <span asp-validation-for="Image"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Thumbnail</label>
+        <input type="File" class="form-control" asp-for="Thumbnail">
+        <span asp-validation-for="Thumbnail"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fabricante</label>
+        <select asp-for="SelectedBrand">
+            <option value="">Selecione o Fabricante</option>
+            @foreach (var item in Model.brands){
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <span asp-validation-for="SelectedBrand"></span>
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+</form>
